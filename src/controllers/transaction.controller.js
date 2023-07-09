@@ -15,3 +15,15 @@ export async function createTransaction(req, res) {
     return res.status(500).send(err.message);
   }
 }
+
+export async function getTransactions(req, res) {
+  const {session} = res.locals;
+
+  try {
+    const transactions = await db.collection("transactions").find({userId: session.userId}).toArray();
+    return res.send(transactions);
+  } catch (err) {
+    console.log(err.message);
+    return res.status(500).send(err.message);
+  }
+}
