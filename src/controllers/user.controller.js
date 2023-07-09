@@ -14,10 +14,8 @@ export async function signUp(req, res) {
       name,
       password: hash,
       email,
-      balance: 0,
-      transactions: [],
     });
-    
+
     return res.sendStatus(201);
   } catch (err) {
     console.log(err.message);
