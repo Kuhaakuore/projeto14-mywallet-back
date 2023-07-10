@@ -9,9 +9,9 @@ export function validateTransactionSchemas(schema) {
         let message = "";
   
         Array.from(errors).forEach((error) => {
-          if (error.includes("value")) message += "O valor da transação precisa ser um valor númerico positivo!";
-          if (error.includes("description")) message += "A descrição da transação não pode ser vazia!";
-          if (error.includes("date")) message += "Data inválida!";
+          if (error.includes("value")) message += "O valor da transação precisa ser um valor númerico positivo!\n";
+          if (error.includes("description")) message += "A descrição da transação não pode ser vazia!\n";
+          if (error.includes("date")) message += "Data inválida!\n";
         });
   
         return res.status(422).send({ errors, message });
