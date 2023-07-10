@@ -1,5 +1,5 @@
 import { db } from "../database/database.connection.js";
-import { ObjectId } from "mongodb"
+import { ObjectId } from "mongodb";
 
 export async function createTransaction(req, res) {
   const { session } = res.locals;
@@ -35,14 +35,33 @@ export async function getTransactions(req, res) {
 }
 
 export async function deleteTransaction(req, res) {
-  const { _id } = req.body;
+  const { id } = req.params;
 
   try {
-    const result = await db.collection("transactions").deleteOne({ _id : new ObjectId(_id) });
-    if (result.deletedCount === 0) return res.status(404).send({ message: "Essa receita não existe!" })
+    const result = await db
+      .collection("transactions")
+      .deleteOne({ _id: new ObjectId(id) });
+    if (result.deletedCount === 0)
+      return res.status(404).send({ message: "Essa receita não existe!" });
     return res.sendStatus(202);
   } catch (err) {
     console.log(err.message);
     return res.status(500).send(err.message);
+  }
+}
+
+export async function editTransaction(req, res) {
+  const { id } = req.params;
+  const { value, description } = req.body;
+
+  try {
+    const result = await db
+      .collection("transactions")
+      .updateOne({ _id: new ObjectId(id) }, { $set: { value, description } });
+    if (result.matchedCount === 0)
+      return res.status(404).send("Transação inexistente!");
+    return res.sendStatus(202);
+  } catch (err) {
+    res.status(500).send(err.message);
   }
 }
