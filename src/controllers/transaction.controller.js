@@ -42,7 +42,7 @@ export async function deleteTransaction(req, res) {
       .collection("transactions")
       .deleteOne({ _id: new ObjectId(id) });
     if (result.deletedCount === 0)
-      return res.status(404).send({ message: "Essa receita não existe!" });
+      return res.status(404).send({message : "Transação inexistente!"});
     return res.sendStatus(202);
   } catch (err) {
     console.log(err.message);
@@ -59,7 +59,7 @@ export async function editTransaction(req, res) {
       .collection("transactions")
       .updateOne({ _id: new ObjectId(id) }, { $set: { value, description } });
     if (result.matchedCount === 0)
-      return res.status(404).send("Transação inexistente!");
+      return res.status(404).send({message : "Transação inexistente!"});
     return res.sendStatus(202);
   } catch (err) {
     res.status(500).send(err.message);
