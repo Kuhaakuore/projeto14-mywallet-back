@@ -20,5 +20,8 @@
     "mongodb": "^5.7.0",
     "nodemon": "^2.0.22",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@joi/date": "^2.1.0"
   }
 }

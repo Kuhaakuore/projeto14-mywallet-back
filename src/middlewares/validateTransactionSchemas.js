@@ -13,7 +13,7 @@ export function validateTransactionSchemas(schema) {
           if (error.includes("description")) message += "A descrição da transação não pode ser vazia!\n";
           if (error.includes("date")) message += "Data inválida!\n";
         });
-  
+        console.log(req.body.date);
         return res.status(422).send({ errors, message });
       }
   
