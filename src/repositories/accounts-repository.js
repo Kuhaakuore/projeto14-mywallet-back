@@ -2,10 +2,10 @@ import { db } from "../config/database.js";
 import { ObjectId } from "mongodb";
 
 async function signUp(data) {
-  const { name, email, password } = data;
+  const { userName, email, password } = data;
 
   await db.collection("accounts").insertOne({
-    name,
+    userName,
     password,
     email,
   });
