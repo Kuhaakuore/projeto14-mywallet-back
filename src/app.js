@@ -1,12 +1,24 @@
-import express, { json } from "express";
-import cors from "cors";
-import router from "./routes/index.routes.js";
+import 'express-async-errors';
+import express, { json } from 'express';
+import cors from 'cors';
+import { accountRouter } from './routers/accounts-router.js';
+import { transactionRouter } from './routers/transactions-router.js';
+import { handleApplicationErrors } from './middlewares/error-handling-middleware.js';
+import { connectDb } from './config/database.js';
 
 const app = express();
 const PORT = process.env.PORT;
 
-app.use(cors());
-app.use(json());
-app.use(router);
+app
+  .use(cors())
+  .use(json())
+  .use('/conta', accountRouter)
+  .use('/transacoes', transactionRouter)
+  .use(handleApplicationErrors);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+export function init() {
+  connectDb();
+  return Promise.resolve(app);
+}
+
+export default app;
