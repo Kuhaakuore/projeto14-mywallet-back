@@ -6,6 +6,17 @@ Back-end API for My Wallet, a financial transactions management solution.
 
 My Wallet is a web browser application with which you can manage every single aspect of your financial transactions.
 
+## Technologies
+
+The following tools and frameworks were used in the construction of the project:<br>
+
+<p>
+<img style='margin: 5px;' src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"/>
+<img style='margin: 5px;' src="https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
+<img style='margin: 5px;' src='https://img.shields.io/badge/Express%20js-000000?style=for-the-badge&logo=express&logoColor=white'>
+<img style='margin: 5px;' src='https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white'>
+</p>
+
 ## Documentation
 
 Below you will find all the system functionalities with their associated routes and expected input and output values.
