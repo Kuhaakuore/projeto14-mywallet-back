@@ -8,9 +8,9 @@ const transactionRouter = Router();
 
 transactionRouter
     .use(validateAuth)
-    .post("/nova-transacao/:tipo", validateBody(transactionSchema), createTransaction)
+    .post("/new-entry/:type", validateBody(transactionSchema), createTransaction)
     .get("/home", getTransactions)
     .delete("/:id", deleteTransaction)
-    .put("/editar-registro/:tipo/:id", validateBody(editTransactionSchema), editTransaction);
+    .put("/edit-entry/:type/:id", validateBody(editTransactionSchema), editTransaction);
 
 export { transactionRouter };

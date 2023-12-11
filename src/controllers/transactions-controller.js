@@ -3,7 +3,7 @@ import { transactionService } from "../services/transaction-service.js";
 
 export async function createTransaction(req, res) {
   const { session } = res.locals;
-  const type = req.params.tipo;
+  const { type } = req.params;
 
   const trasactionData = { session, type, ...req.body };
 

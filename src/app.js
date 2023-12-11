@@ -12,8 +12,8 @@ const PORT = process.env.PORT;
 app
   .use(cors())
   .use(json())
-  .use('/conta', accountRouter)
-  .use('/transacoes', transactionRouter)
+  .use('/accounts', accountRouter)
+  .use('/transactions', transactionRouter)
   .use(handleApplicationErrors);
 
 export function init() {
